@@ -1,7 +1,19 @@
 const util = require('util');
+const fs = require('fs')
 
 //This package will be used to generate a unique ID.
-const uuidvl = require('uuid');
+//const uuidv = require('uuid');
+const { v4: uuidv4 } = require('uuid');
+uuidv4();
+//const uuidv4 = require('uuidv4');
+
+module.exports = function(request){
+      return newNote = {
+         "title": request.title,
+         "text": request.text,
+         "id": uuidv4()
+   }
+}
 
 const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync= util.promisify(fs.writeFile);

@@ -1,6 +1,7 @@
 //Import what we need
 const express = require('express')
 
+
 //Initializes app and creates my port
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -13,7 +14,7 @@ app.use(express.static('public'));
 //routes
 const apiRoutes = require('./routes/apiRoutes')
 const htmlRoutes = require('./routes/htmlRoutes')(app);
-//require('./routes/apiRoutes')(app);
+
 
 //Bring in the Routes
 app.use('/api', apiRoutes)
