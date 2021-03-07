@@ -3,17 +3,11 @@ const fs = require('fs')
 
 //This package will be used to generate a unique ID.
 //const uuidv = require('uuid');
-const { v4: uuidv4 } = require('uuid');
+const uuidv4 = require('uuid');
 uuidv4();
-//const uuidv4 = require('uuidv4');
 
-module.exports = function(request){
-      return newNote = {
-         "title": request.title,
-         "text": request.text,
-         "id": uuidv4()
-   }
-}
+
+//const uuidv4 = require('uuidv4');
 
 const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync= util.promisify(fs.writeFile);
@@ -29,9 +23,35 @@ class Store {
     }
 
     //create a function to getNotes
+    getNotes() {
+        return this.read().then(notes => {
+            let notesList;
+            try { 
+                notesList = [].concat(JSON.parse(notes));
+            }
+            catch (err) {
+                notesList = [];
+            }
+            return notesList;
+        })
+    }
     //create a function to addNotes
-    //create a function to removeNotes by ID
-}
+    addNotes(note) {
+        const { title, text } = note;
+        const userNote = { title, text, id: uuidv4() }
+        return this.getNotes()
+        .then(notes => [...notes, userNote])
+        .then(newNotes => this.write(newNotes))
+        .then(() => userNote)
+    }
+    
+    //create a function to removeNotes BY ID (you cannot do this without getting uuiv to work)
+    removeNotes(id) {
+        return this.getNotes()
+        .then(notes => notes.filter(note => note.id !== (id)))
+        .then(deletedNotes => this.write(deletedNotes))
+     }
+    }
 
 //export new store
 
