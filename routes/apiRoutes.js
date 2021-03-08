@@ -14,7 +14,6 @@ router.get('/notes', (req, res) => {
 })
 
 // create a post request
-// create a post request
 router.post('/notes', (req, res) => {
     store.addNotes(req.body)
     .then(notes => res.json(notes))
