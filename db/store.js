@@ -1,5 +1,5 @@
 const util = require('util');
-const fs = require('fs')
+const fs = require('fs');
 
 //This package will be used to generate a unique ID.
 //const uuidv = require('uuid');
@@ -15,7 +15,7 @@ const writeFileAsync= util.promisify(fs.writeFile);
 //Create class
 class Store {
     read(){
-        return readFileAsync('db/db.json', 'utf8')
+        return readFileAsync('db/db.json', 'utf8');
     }
 
     write(note) {
