@@ -6,6 +6,11 @@ https://note-taker-jsh.herokuapp.com/
 https://git.heroku.com/note-taker-jsh.git
 
 
+<img src="public\assets\2021-03-07 (4).png" alt="Index Screenshot"/>
+
+<img src="public\assets\2021-03-07 (6).png" alt="Notes Screenshot"/>
+
+
 ## Your Task
 
 Your assignment is to modify starter code to create an application called Note Taker that can be used to write and save notes. This application will use an Express.js back end and will save and retrieve note data from a JSON file.
