@@ -3,6 +3,7 @@
 Heroku Link
 
 https://note-taker-jsh.herokuapp.com/
+https://git.heroku.com/note-taker-jsh.git
 
 
 ## Your Task
