@@ -15,6 +15,7 @@ router.get('/notes', (req, res) => {
 
 // create a post request
 router.post('/notes', (req, res) => {
+    console.log(req.body)
     store.addNotes(req.body)
     .then(notes => res.json(notes))
     .catch(err => res.status(500).json(err));

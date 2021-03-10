@@ -3,8 +3,8 @@ const fs = require('fs');
 
 //This package will be used to generate a unique ID.
 //const uuidv = require('uuid');
-const uuid = require('uuid');
-console.log();
+const { v4: uuidv4 } = require('uuid');
+console.log(uuidv4());
 
 
 //const uuidv4 = require('uuidv4');
@@ -19,6 +19,7 @@ class Store {
     }
 
     write(note) {
+
         return writeFileAsync('db/db.json', JSON.stringify(note));
     }
 
@@ -33,12 +34,14 @@ class Store {
                 notesList = [];
             }
             return notesList;
-        })
-    }
+        }
+        )}
     //create a function to addNotes
     addNotes(note) {
-        const { title, text } = note;
-        const userNote = { title, text, id: uuid() }
+        const { title, text } = note; 
+        const id = uuidv4();
+        console.log(id)
+        const userNote = { title, text, id}
         return this.getNotes()
         .then(notes => [...notes, userNote])
         .then(newNotes => this.write(newNotes))
